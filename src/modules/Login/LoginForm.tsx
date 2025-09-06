@@ -20,9 +20,9 @@ const LoginForm = ({ formikProps }: Props) => {
             <div className="flex flex-col gap-2">
               {/* <div className="text-xl font-bold">  </div> */}
               <p className="text-xl text-black text-center font-bold md:text-3xl uppercase">
-                Concept Culture
+                Brightbooks Accounting
               </p>
-              <i className="font-medium text-center">Login Here!</i>
+              <b className="font-medium text-center">Login Here!</b>
             </div>
 
             <div className="flex flex-col gap-4">
