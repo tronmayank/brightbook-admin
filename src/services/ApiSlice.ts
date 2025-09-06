@@ -11,7 +11,7 @@ export const apiSlice = createApi({
       const deviceId = localStorage.getItem("deviceId");
 
       // if (token && endpoint !== "getAccessModules") {
-      //   headers.set("authorization", token);
+      //   headers.set("authorization", token);hh
       // }
       if (token && endpoint !== "getAccessModules") {
         headers.set("Authorization", `Bearer ${token}`);
