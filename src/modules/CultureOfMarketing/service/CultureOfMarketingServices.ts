@@ -7,9 +7,20 @@ export const ComApi = apiSlice.injectEndpoints({
       providesTags: ["com"],
       query: (body) => {
         return {
-          url: "/com/get-data",
+          url: "/artical/pagination",
           method: "GET",
           params: body,
+        };
+      },
+    }),
+
+    // Get By Id
+    getByIdArticle: builder.query({
+      providesTags: ["com"],
+      query: (id) => {
+        return {
+          url: `/artical/${id}`,
+          method: "GET",
         };
       },
     }),
@@ -19,13 +30,26 @@ export const ComApi = apiSlice.injectEndpoints({
       invalidatesTags: ["com"],
       query: (body) => {
         return {
-          url: "/com/add",
+          url: "/artical/add",
           method: "POST",
           body,
         };
       },
     }),
+
+    // update
+    updateArticle: builder.mutation({
+      invalidatesTags: ["com"],
+      query: ({ id, body }) => {
+        return {
+          url: `/artical/${id}`,
+          method: "PUT",
+          body,
+        };
+      },
+    }),
+
   }),
 });
 
-export const { useGetComQuery, useAddComMutation } = ComApi;
+export const { useGetComQuery, useGetByIdArticleQuery, useAddComMutation, useUpdateArticleMutation } = ComApi;

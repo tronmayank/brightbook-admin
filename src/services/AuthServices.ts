@@ -47,7 +47,7 @@ export const authApi = apiSlice.injectEndpoints({
     uploadFile: builder.mutation({
       query: ({ body }) => {
         return {
-          url: `/auth/upload`,
+          url: `/auth/upload-file`,
           method: "POST",
           body,
         };

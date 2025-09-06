@@ -74,55 +74,55 @@ const navigation: (params?: {
           // permission: "NAV_ADMIN_USER",
         },
         {
-          title: "Inquiry",
+          title: "Enquiry",
           icon: IconMessage2Question,
-          path: "inquiry",
+          path: "enquiry",
           searchParams: {
             page: "1",
             limit: "10",
           },
           // permission: "NAV_ADMIN_USER",
         },
+        // {
+        //   title: "Swipe Cards",
+        //   icon: IconSwipe,
+        //   path: "swipe-cards",
+        // },
+        {
+          title: "Articles",
+          icon: IconArrowNarrowRight,
+          path: "articles",
+        },
         {
           title: "Appointments",
           icon: IconCalendarWeek,
           path: "appointments",
         },
-        {
-          title: "Swipe Cards",
-          icon: IconSwipe,
-          path: "swipe-cards",
-        },
-        {
-          title: "Culture of Marketing",
-          icon: IconArrowNarrowRight,
-          path: "culture-of-marketing",
-        },
-        {
-          title: "Culture of Origin",
-          icon: IconArrowNarrowRight,
-          path: "culture-of-origin",
-        },
-        {
-          title: "Motioncult",
-          icon: IconArrowNarrowRight,
-          path: "motion-cult",
-        },
-        {
-          title: "Story",
-          icon: IconArrowNarrowRight,
-          path: "story",
-        },
-        {
-          title: "Explore",
-          icon: IconArrowNarrowRight,
-          path: "explore",
-        },
-        {
-          title: "About Us",
-          icon: IconUsersGroup,
-          path: "about-us",
-        },
+        // {
+        //   title: "Culture of Origin",
+        //   icon: IconArrowNarrowRight,
+        //   path: "culture-of-origin",
+        // },
+        // {
+        //   title: "Motioncult",
+        //   icon: IconArrowNarrowRight,
+        //   path: "motion-cult",
+        // },
+        // {
+        //   title: "Story",
+        //   icon: IconArrowNarrowRight,
+        //   path: "story",
+        // },
+        // {
+        //   title: "Explore",
+        //   icon: IconArrowNarrowRight,
+        //   path: "explore",
+        // },
+        // {
+        //   title: "About Us",
+        //   icon: IconUsersGroup,
+        //   path: "about-us",
+        // },
       ],
     },
     // {

@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, FormikHelpers, Form } from "formik";
 import { object, string } from "yup";
-import { useAddComMutation, useGetComQuery } from "../../service/CultureOfMarketingServices";
+import { useAddComMutation, useGetByIdArticleQuery, useUpdateArticleMutation } from "../../service/CultureOfMarketingServices";
 import { showToast } from "src/utils/showToaster";
 import CultureOfMarketingLayout from "../../components/CultureOfMarketingLayout";
-import { CultureOfMarketingFormValues } from "../../models/CultureOfMarketing.model";
+import { ArticleListResponseType, CultureOfMarketingFormValues } from "../../models/CultureOfMarketing.model";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const AddCultureOfMarketingWrapper = () => {
-  const [addCultureOfMarketing] = useAddComMutation();
-  const { data, isFetching, isLoading } = useGetComQuery("")
-  console.log(data, "aagya")
+const EditArticleWrapper = () => {
+
+  const { id } = useParams();
+  const [items, setItems] = useState<ArticleListResponseType>();
+
+  const { data, isFetching, isLoading } = useGetByIdArticleQuery(id, {
+    skip: !id
+  });
+
+  const [updateArticle] = useUpdateArticleMutation();
+
+  useEffect(() => {
+    if (!isLoading || !isFetching) {
+      setItems(data?.data)
+    }
+  }, [])
 
   const date = new Date();
   const navigate = useNavigate();
@@ -19,14 +32,12 @@ const AddCultureOfMarketingWrapper = () => {
   const day = String(date.getDate()).padStart(2, "0");
   const formatted = `${year}-${month}-${day}`;
 
-
-
   const initialValues: CultureOfMarketingFormValues = {
-    title: '',
-    image: '',
-    head: '',
-    para1: '',
-    date: formatted,
+    title: items?.title || '',
+    image: items?.image || '',
+    head: items?.head || '',
+    para1: items?.para1 || '',
+    date: items?.date || '',
   };
 
   const validationSchema = object().shape({
@@ -41,13 +52,15 @@ const AddCultureOfMarketingWrapper = () => {
     { resetForm, setSubmitting }: FormikHelpers<CultureOfMarketingFormValues>
   ) => {
     try {
-      await addCultureOfMarketing(values).then((res) => {
+      await updateArticle({
+        id: id,
+        body: values
+      }).then((res) => {
         if (res?.data?.status) {
           navigate('/articles')
-          showToast("success", "Article added successfully");
+          showToast("success", "Article updated successfully");
         } else {
           showToast("error", res?.data?.message);
-
         }
       })
       resetForm();
@@ -61,6 +74,7 @@ const AddCultureOfMarketingWrapper = () => {
 
   return (
     <Formik<CultureOfMarketingFormValues>
+      enableReinitialize
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
@@ -70,7 +84,7 @@ const AddCultureOfMarketingWrapper = () => {
           <CultureOfMarketingLayout
             formikProps={formikProps}
             onClose={() => { }}
-            type="ADD"
+            type="EDIT"
           />
         </Form>
       )}
@@ -78,4 +92,4 @@ const AddCultureOfMarketingWrapper = () => {
   );
 };
 
-export default AddCultureOfMarketingWrapper;
+export default EditArticleWrapper;

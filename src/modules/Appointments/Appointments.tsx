@@ -24,7 +24,9 @@ const Appointments = () => {
   return (
     <div className="w-full h-screen">
       <iframe
-        src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1k7clLGSEgdcEeNg7kDawGP0ThbuPyeoIwt2-M-xNjleC4XaIj_6Dvuw1kyPRRKmroQOPK6H27"
+        // src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1k7clLGSEgdcEeNg7kDawGP0ThbuPyeoIwt2-M-xNjleC4XaIj_6Dvuw1kyPRRKmroQOPK6H27"
+        // src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1k7clLGSEgdcEeNg7kDawGP0ThbuPyeoIwt2-M-xNjleC4XaIj_6Dvuw1kyPRRKmroQOPK6H27"
+        src="https://calendar.app.google/ubXdrkYpCuM7f7tz9"
         className="w-full h-full"
         allowFullScreen
       />

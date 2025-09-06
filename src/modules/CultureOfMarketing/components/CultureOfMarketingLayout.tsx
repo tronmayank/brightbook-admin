@@ -5,9 +5,10 @@ import ATMCircularProgress from "src/components/atoms/ATMCircularProgress/ATMCir
 import ATMTextArea from "src/components/atoms/FormElements/ATMTextArea/ATMTextArea";
 import ATMTextField from "src/components/atoms/FormElements/ATMTextField/ATMTextField";
 import { useUploadFileMutation } from "src/services/AuthServices";
+import { CultureOfMarketingFormValues } from "../models/CultureOfMarketing.model";
 
 type Props = {
-  formikProps: FormikProps<any>;
+  formikProps: FormikProps<CultureOfMarketingFormValues>;
   onClose: () => void;
   type: "ADD" | "EDIT";
   isLoading?: boolean;
@@ -15,6 +16,7 @@ type Props = {
 
 const CultureOfMarketingLayout = ({ formikProps, isLoading }: Props) => {
   const { values, setFieldValue, handleBlur, handleSubmit } = formikProps;
+  console.log('values: ', values);
 
   const [uploadFile, { isLoading: imgIsloading }] = useUploadFileMutation();
 
@@ -45,10 +47,8 @@ const CultureOfMarketingLayout = ({ formikProps, isLoading }: Props) => {
         body: formData,
         fileName: fieldName,
       }).unwrap();
-      if (response?.fileUrl) {
-        setFieldValue(fieldName, response.fileUrl);
-
-        console.log(`${fieldName} uploaded successfully:`, response.fileUrl);
+      if (response?.status) {
+        setFieldValue(fieldName, response?.data?.url);
       }
     } catch (error) {
       console.error(`Error uploading ${fieldName}:`, error);
@@ -64,7 +64,7 @@ const CultureOfMarketingLayout = ({ formikProps, isLoading }: Props) => {
       ) : (
         <div className="flex flex-col gap-y-6 p-6 bg-slate-100 shadow-lg rounded-lg">
           <div className="flex justify-between border-b-2 pb-4 border-black">
-            <h3 className="text-lg font-bold">CULTURE OF MARKETING</h3>
+            <h3 className="text-lg font-bold">Articles</h3>
 
             <ATMButton
               extraClasses="-mt-1 mr-4"
@@ -76,87 +76,78 @@ const CultureOfMarketingLayout = ({ formikProps, isLoading }: Props) => {
               Save
             </ATMButton>
           </div>
-          {/* <ATMTextField
-            name="title"
-            value={values.title}
-            placeholder="Enter Title"
-            onChange={(e) => setFieldValue("title", e.target.value)}
-            label="Title"
-            onBlur={handleBlur}
-          /> */}
 
-          <ATMTextArea
-            name="body"
-            value={values.body}
-            placeholder="Enter Body"
-            onChange={(e) => setFieldValue("body", e.target.value)}
-            label="Body"
-            onBlur={handleBlur}
-          />
+          <div className="border p-4 rounded-lg mb-4 bg-white shadow">
+            <h4 className="text-lg font-bold text-gray-700 mb-2 capitalize">
+              Add Article
+            </h4>
 
-          {["theChallenge", "middleBanner", "theResearch", "theSolution"].map(
-            (section) => (
-              <div
-                key={section}
-                className="border p-4 rounded-lg mb-4 bg-white shadow"
-              >
-                <h4 className="text-lg font-bold text-gray-700 mb-2 capitalize">
-                  {section.replace(/([A-Z])/g, " $1").trim()}
-                </h4>
+            <div className="grid grid-cols-2 gap-x-4">
 
-                <div className="mb-4">
-                  <ATMTextField
-                    name={`${section}.title`}
-                    value={values[section]?.title || ""}
-                    placeholder="Enter Title"
-                    onChange={(e) =>
-                      setFieldValue(`${section}.title`, e.target.value)
-                    }
-                    label="Title"
-                    onBlur={handleBlur}
-                  />{" "}
-                </div>
-                {section != "middleBanner" ? (
-                  <div className="mb-4">
-                    <ATMTextArea
-                      name={`${section}.body`}
-                      value={values[section]?.body || ""}
-                      placeholder="Enter Body"
-                      onChange={(e) =>
-                        setFieldValue(`${section}.body`, e.target.value)
-                      }
-                      label="Body"
-                      onBlur={handleBlur}
-                    />{" "}
-                  </div>
-                ) : null}
 
-                <div className="mb-4">
-
-                  <label className=" uppercase text-sm font-bold py-2 px-2">
-                    {"upload image"}
-                  </label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(event) =>
-                      handleFileChange(event, setFieldValue, `${section}.img`)
-                    }
-                    className="border p-2 rounded"
-                  />
-
-                  <div className="h-96 w-full p-1 flex items-center justify-center border">
-                    <img
-                      src={values[section]?.img}
-                      alt=""
-                      className="h-full w-full object-fill"
-                    />
-                  </div>
-                </div>
-                {/* </div> */}
+              <div className="mb-4">
+                <ATMTextField
+                  name='title'
+                  value={values.title || ""}
+                  placeholder="Enter Title"
+                  onChange={(e) =>
+                    setFieldValue(`title`, e.target.value)
+                  }
+                  label="Title"
+                  onBlur={handleBlur}
+                />
               </div>
-            )
-          )}
+
+              <div className="mb-4">
+                <ATMTextArea
+                  name='head'
+                  value={values.head || ""}
+                  placeholder="Enter head"
+                  onChange={(e) =>
+                    setFieldValue('head', e.target.value)
+                  }
+                  label="Head"
+                  onBlur={handleBlur}
+                />
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <ATMTextArea
+                name='para1'
+                value={values.para1 || ""}
+                placeholder="Enter para1"
+                onChange={(e) =>
+                  setFieldValue('para1', e.target.value)
+                }
+                rows={10}
+                label="Description"
+                onBlur={handleBlur}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className=" uppercase text-xs font-bold py-2 px-2">
+                {"upload image"}
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(event) =>
+                  handleFileChange(event, setFieldValue, 'image')
+                }
+                className="border p-2 rounded"
+              />
+
+              <div className="h-96 w-full text-xs p-1 flex items-center justify-center border">
+                <img
+                  src={values?.image}
+                  alt=""
+                  className="h-full w-full object-fill"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>

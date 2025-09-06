@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { IconExclamationCircle, IconSquareRoundedCheck } from "@tabler/icons-react";
 import { useState } from "react";
 import ATMConfirmationDialog from "src/components/atoms/ATMConfirmationDialog/ATMConfirmationDialog";
+import { format } from 'date-fns';
 
 type Props = {};
 
@@ -68,14 +69,16 @@ const InquiryListingWrapper = (props: Props) => {
       flex: "flex-[1_1_0%]",
     },
     {
-      fieldName: "businessName",
-      headerName: "Business Name",
+      fieldName: "serviceNeeded",
+      headerName: "Service Needed",
       flex: "flex-[1_1_0%]",
+      renderCell: (row) => row?.serviceNeeded?.replaceAll('_', ' '),
     },
     {
-      fieldName: "industry",
-      headerName: "Industry",
+      fieldName: "createdAt",
+      headerName: "Create Date",
       flex: "flex-[1_1_0%]",
+      renderCell: (row) => format(new Date(row?.createdAt), "dd-MM-yy hh:mm a"),
     },
     {
       fieldName: "acknowledged",
@@ -103,9 +106,9 @@ const InquiryListingWrapper = (props: Props) => {
         tableHeaders={tableHeaders}
         rowData={data as InquiryProps[]}
         onAddNew={() => dispatch(setIsOpenAddDialog(true))}
-        onView={(item) => {
-          navigation(`/inquiry/${item?._id}`);
-        }}
+        // onView={(item) => {
+        //   navigation(`/enquiry/${item?._id}`);
+        // }}
         filterPaginationData={{
           totalCount: totalData,
           totalPages: totalPages,

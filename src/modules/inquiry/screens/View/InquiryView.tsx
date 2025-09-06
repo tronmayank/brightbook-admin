@@ -34,7 +34,7 @@ const InquiryCard: React.FC = () => {
 
   const inquiry = inquiryData?.data;
 
-  if (!inquiry || inquiry.length === 0) {
+  if (!inquiry || inquiry?.length === 0) {
     return <p className="text-center text-gray-500">No inquiries found.</p>;
   }
   return (
@@ -44,48 +44,48 @@ const InquiryCard: React.FC = () => {
       </h2>
       <div className="flex justify-between items-center mb-4 shadow-md border-l-8 border-slate-400 border-t-2 p-3 rounded-2xl">
         <p className="text-ms  text-gray-800">
-          <strong>Name:</strong> {inquiry.name || 'N/A'}
+          <strong>Name:</strong> {inquiry?.name || 'N/A'}
         </p>
         {/* <span
           className={`text-xs px-3 py-1 rounded-full ${
-            inquiry.isActive
+            inquiry?.isActive
               ? "bg-green-500 text-white"
               : "bg-red-500 text-white"
           }`}
         >
-          {inquiry.isActive ? "Active" : "Inactive"}
+          {inquiry?.isActive ? "Active" : "Inactive"}
         </span> */}
       </div>
 
       <p className="text-sm text-gray-600 mb-2 shadow-md border-l-8 border-slate-400 border-t-2 p-3 rounded-2xl">
-        <strong>Business:</strong> {inquiry.businessName || 'N/A'}
+        <strong>Business:</strong> {inquiry?.businessName || 'N/A'}
       </p>
       <p className="text-sm text-gray-600 mb-2 shadow-md border-l-8 border-slate-400 border-t-2 p-3 rounded-2xl">
-        <strong>Industry:</strong> {inquiry.industry || 'N/A'}
+        <strong>Industry:</strong> {inquiry?.industry || 'N/A'}
       </p>
       <p className="text-sm text-gray-600 mb-2 shadow-md border-l-8 border-slate-400 border-t-2 p-3 rounded-2xl">
-        <strong>Email:</strong> {inquiry.email || 'N/A'}
+        <strong>Email:</strong> {inquiry?.email || 'N/A'}
       </p>
-      {inquiry.phone && (
+      {inquiry?.phone && (
         <p className="text-sm text-gray-600 mb-2 shadow-md border-l-8 border-slate-400 border-t-2 p-3 rounded-2xl">
-          <strong>Phone:</strong> {inquiry.phone || 'N/A'}
+          <strong>Phone:</strong> {inquiry?.phone || 'N/A'}
         </p>
       )}
 
       <p className="text-sm text-gray-600 mb-2 shadow-md border-l-8 border-slate-400 border-t-2 p-3 rounded-2xl">
-        <strong>What Bring You:</strong> {inquiry.whatBringYou || 'N/A'}
+        <strong>What Bring You:</strong> {inquiry?.whatBringYou || 'N/A'}
       </p>
 
       <p className="text-sm text-gray-600 mb-2 shadow-md border-l-8 border-slate-400 border-t-2 p-3 rounded-2xl">
-        <strong>Focus Area:</strong> {inquiry.focusArea.join(", ") || 'N/A'}
+        {/* <strong>Focus Area:</strong> {inquiry?.focusArea.join(", ") || 'N/A'} */}
       </p>
 
       <p className="text-sm text-gray-600 mb-2 shadow-md border-l-8 border-slate-400 border-t-2 p-3 rounded-2xl">
-        <strong>Marketing Budget:</strong> {inquiry.marketingBudget.join(", ") || 'N/A'}
+        {/* <strong>Marketing Budget:</strong> {inquiry?.marketingBudget.join(", ") || 'N/A'} */}
       </p>
 
       <p className="text-sm text-gray-500 mt-4 shadow-md border-l-8 border-slate-400 border-t-2 p-3 rounded-2xl">
-        <strong>Created:</strong> {new Date(inquiry.createdAt).toLocaleString() || 'N/A'}
+        <strong>Created:</strong> {new Date(inquiry?.createdAt).toLocaleString() || 'N/A'}
       </p>
     </div>
   );

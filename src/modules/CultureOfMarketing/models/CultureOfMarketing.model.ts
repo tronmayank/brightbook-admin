@@ -1,19 +1,15 @@
-export type User = {
-  _id: string;
-  fullName: string;
-  email: string;
-  password: string;
-  userName: string;
-  phone: string;
-  userType: string;
-  salaryPerDay: string;
-  subsrcriptionStartDate: string;
-  subsrcriptionEndDate: string;
-  isSubscriptionValid: string;
-  companyCode: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+export type ArticleListResponseType = {
+  _id: string,
+  title: string,
+  image: string
+  head: string
+  date: string
+  para1: string
+  isDeleted: false,
+  isActive: true,
+  createdAt: string,
+  updatedAt: string,
+  __v: number
 };
 
 export enum UserEnum {
@@ -23,25 +19,9 @@ export enum UserEnum {
 }
 
 export interface CultureOfMarketingFormValues {
-  // title: string;
-  body: string;
-  theChallenge?: {
-    img: string;
-    title: string;
-    body: string;
-  };
-  middleBanner?: {
-    img: string;
-    title: string;
-  };
-  theResearch?: {
-    img: string;
-    title: string;
-    body: string;
-  };
-  theSolution?: {
-    img: string;
-    title: string;
-    body: string;
-  };
+  title: string;
+  head: string;
+  para1: string;
+  image: string;
+  date: string;
 }

@@ -11,6 +11,7 @@ export type InquiryProps = {
   acknowledged: boolean
   isDeleted: boolean;
   isActive: boolean;
+  serviceNeeded: string;
   createdAt: string;
   updatedAt: string;
   __v: number;

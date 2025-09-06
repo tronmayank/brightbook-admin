@@ -17,6 +17,8 @@ import SwipeView from "./modules/SwipeCards/SwipeView";
 import AddMotionCultFormWrapper from "./modules/MotionCult/screens/Add/AddMotionCultWrapper";
 import AddStoryWrapper from "./modules/Story/screens/Add/StoryWrapper";
 import AddExploreWrapper from "./modules/Explore/screens/Add/ExploreWrapper";
+import ArticleListingWrapper from "./modules/CultureOfMarketing/screens/List/ArticleListingWrapper";
+import EditArticleWrapper from "./modules/CultureOfMarketing/screens/Edit/EditArticleWrapper";
 // Import PageRoute Above
 
 const PageRoutes = () => {
@@ -47,12 +49,11 @@ const PageRoutes = () => {
         },
 
         {
-          path: "inquiry/",
+          path: "enquiry/",
           element: <InquiryListingWrapper />,
         },
-
         {
-          path: "inquiry/:id",
+          path: "enquiry/:id",
           element: <InquiryView />,
         },
         {
@@ -64,8 +65,16 @@ const PageRoutes = () => {
           element: <SwipeView />,
         },
         {
-          path: "culture-of-marketing",
+          path: "articles",
+          element: <ArticleListingWrapper />,
+        },
+        {
+          path: "articles/add",
           element: <AddCultureOfMarketingWrapper />,
+        },
+        {
+          path: "articles/:id",
+          element: <EditArticleWrapper />,
         },
         {
           path: "culture-of-origin",

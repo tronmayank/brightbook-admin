@@ -41,9 +41,9 @@ const ATMAppHeader = (props: Props) => {
     <>
       <div className="flex items-center justify-between h-full px-4 border-b bg-white">
         <div className="flex items-center gap-2 -ml-2">
-          <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden">
+          <div className="w-40 h-w-40  flex items-center justify-center overflow-hidden">
             <img
-              src="/CCIcon.png"
+              src="/logo.png"
               alt="logo"
               className="w-full h-full object-contain"
             />
