@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 
 const EditArticleWrapper = () => {
 
+  console.log('here...............');
   const { id } = useParams();
   const [items, setItems] = useState<ArticleListResponseType>();
 
@@ -23,7 +24,7 @@ const EditArticleWrapper = () => {
     if (!isLoading || !isFetching) {
       setItems(data?.data)
     }
-  }, [])
+  }, [isLoading, isFetching, data])
 
   const date = new Date();
   const navigate = useNavigate();
@@ -72,6 +73,7 @@ const EditArticleWrapper = () => {
     }
   };
 
+  console.log('items12367890987654321', items);
   return (
     <Formik<CultureOfMarketingFormValues>
       enableReinitialize

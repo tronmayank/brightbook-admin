@@ -52,7 +52,7 @@ const AboutUsLayout = ({ formikProps, isLoading }: Props) => {
 
       if (response?.fileUrl) {
         setFieldValue(`team[${index}].profileImage`, response.fileUrl);
-        console.log(`Profile image uploaded:`, response.fileUrl);
+        // console.log(`Profile image uploaded:`, response.fileUrl);
       }
     } catch (error) {
       console.error("Error uploading profile image:", error);
