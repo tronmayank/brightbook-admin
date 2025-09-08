@@ -49,15 +49,7 @@ const InquiryListing = ({
   return (
     <div className="flex flex-col h-full gap-2">
       {/* Page Header */}
-      <ATMPageHeader
-        heading="ENQUIRY"
-        hideButton
-        buttonProps={{
-          label: "Add New",
-          icon: IconPlus,
-          onClick: onAddNew,
-        }}
-      />
+
 
       <div className="flex flex-col overflow-auto border rounded border-slate-300 h-screen">
         {/* Table Toolbar */}

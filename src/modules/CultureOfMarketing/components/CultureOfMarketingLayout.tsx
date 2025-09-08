@@ -139,7 +139,7 @@ const CultureOfMarketingLayout = ({ formikProps, isLoading }: Props) => {
                 className="border p-2 rounded"
               />
 
-              <div className="h-96 w-full text-xs p-1 flex items-center justify-center border">
+              <div className="h-96 w-1/2 text-xs p-1 flex items-center justify-center border">
                 <img
                   src={values?.image}
                   alt=""

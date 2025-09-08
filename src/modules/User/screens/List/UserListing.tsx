@@ -33,15 +33,7 @@ const UserListing = ({
   return (
     <>
       <div className="flex flex-col h-full gap-2">
-        <ATMPageHeader
-          heading="User"
-          hideButton
-          buttonProps={{
-            label: "Add New",
-            icon: IconPlus,
-            onClick: onAddNew,
-          }}
-        />
+
         <div className="flex flex-col overflow-auto border rounded border-slate-300 h-screen">
           {/* Table Toolbar */}
           <MOLFilterBar />
